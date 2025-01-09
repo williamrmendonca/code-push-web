@@ -9,7 +9,7 @@ class RestApi {
   constructor() {
     if (instance) return instance;
     instance = this;
-    if (__DEV__ === true) {
+    if (process.env.NODE_ENV === 'development') {
       this.baseURI = _.get(common, 'api.devURL', 'http://localhost:3000');
     } else {
       this.baseURI = _.get(common, 'api.URL', 'http://localhost:3000');
