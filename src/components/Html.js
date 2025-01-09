@@ -7,9 +7,12 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import serialize from 'serialize-javascript';
 import { analytics } from '../config';
+import SafeHtml from './SafeHtml';
+import GoogleAnalytics from './GoogleAnalytics';
 
 class Html extends React.Component {
   static propTypes = {
@@ -20,8 +23,7 @@ class Html extends React.Component {
       cssText: PropTypes.string.isRequired,
     }).isRequired),
     scripts: PropTypes.arrayOf(PropTypes.string.isRequired),
-    // eslint-disable-next-line react/forbid-prop-types
-    state: PropTypes.object,
+    state: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     children: PropTypes.string.isRequired,
   };
 
@@ -43,40 +45,28 @@ class Html extends React.Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="apple-touch-icon" href="apple-touch-icon.png" />
           <link rel="stylesheet" href="/css/bootstrap.min.css" />
-          {styles.map(style =>
-            <style
-              key={style.id}
-              id={style.id}
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: style.cssText }}
-            />,
-          )}
+          {styles.map(style => (
+            <style key={style.id} id={style.id}>
+              {style.cssText}
+            </style>
+          ))}
         </head>
         <body style={{ minHeight: '100%' }}>
-          <div
-            id="app"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: children }}
-          />
+          <div id="app">
+            <SafeHtml content={children} />
+          </div>
+          
           {state && (
-            <script
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html:
-              `window.APP_STATE=${serialize(state, { isJSON: true })}` }}
-            />
+            <script>
+              {`window.APP_STATE = ${JSON.stringify(serialize(state, { isJSON: true }))}`}
+            </script>
           )}
+          
           {scripts.map(script => <script key={script} src={script} />)}
-          {analytics.google.trackingId &&
-            <script
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html:
-              'window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;' +
-              `ga('create','${analytics.google.trackingId}','auto');ga('send','pageview')` }}
-            />
-          }
-          {analytics.google.trackingId &&
-            <script src="https://www.google-analytics.com/analytics.js" async defer />
-          }
+          
+          {analytics.google.trackingId && (
+            <GoogleAnalytics trackingId={analytics.google.trackingId} />
+          )}
         </body>
       </html>
     );

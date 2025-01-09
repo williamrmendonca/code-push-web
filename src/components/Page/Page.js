@@ -9,6 +9,7 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import SafeHtml from '../SafeHtml';
 import s from './Page.css';
 
 class Page extends React.Component {
@@ -23,10 +24,7 @@ class Page extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <h1>{title}</h1>
-          <div
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          <SafeHtml content={html} />
         </div>
       </div>
     );
