@@ -1,4 +1,3 @@
-
 import React, { PropTypes, Component } from 'react';
 import { Breadcrumb, Table, Button, Col } from 'react-bootstrap';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
@@ -63,7 +62,7 @@ class AccessKeys extends Component {
             onClick={() => { self.props.removeKey(_.get(rowData, 'friendlyName')); }}
             bsStyle="danger"
           >
-          移除
+           Remover
         </Button>
         </td>
       </tr>
@@ -72,9 +71,9 @@ class AccessKeys extends Component {
 
   render() {
     const self = this;
-    let tipText = '暂无数据';
+    let tipText = 'Sem dados';
     if (this.props.isFetching) {
-      tipText = '加载数据中...';
+      tipText = 'Carregando dados...';
     }
     return (
       <div className={s.root}>
@@ -86,8 +85,8 @@ class AccessKeys extends Component {
         <div className={s.container}>
           <Breadcrumb>
             <Breadcrumb.Item active>
-            密钥列表
-          </Breadcrumb.Item>
+              Lista de Chaves
+            </Breadcrumb.Item>
           </Breadcrumb>
           <Col style={{ marginBottom: '20px' }}>
             <Button
@@ -97,18 +96,18 @@ class AccessKeys extends Component {
               bsStyle="primary"
               disabled={!!this.props.isCreating}
             >
-              创建key
+              Criar chave
             </Button>
           </Col>
           <Table striped bordered condensed hover responsive>
             <thead>
               <tr>
-                <th style={{ textAlign: 'center' }} >名字</th>
-                <th style={{ textAlign: 'center' }} >创建者</th>
-                <th style={{ textAlign: 'center' }} >类型</th>
-                <th style={{ textAlign: 'center' }} >创建时间</th>
-                <th style={{ textAlign: 'center' }} >过期时间</th>
-                <th style={{ textAlign: 'center' }} >操作</th>
+                <th style={{ textAlign: 'center' }} >Nome</th>
+                <th style={{ textAlign: 'center' }} >Criador</th>
+                <th style={{ textAlign: 'center' }} >Tipo</th>
+                <th style={{ textAlign: 'center' }} >Data de Criação</th>
+                <th style={{ textAlign: 'center' }} >Data de Expiração</th>
+                <th style={{ textAlign: 'center' }} >Ações</th>
               </tr>
             </thead>
             <tbody>

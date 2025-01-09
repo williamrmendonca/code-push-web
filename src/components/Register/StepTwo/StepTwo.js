@@ -64,12 +64,12 @@ class StepTwo extends Component {
           return <Button disabled>{second}</Button>
         }}
         renderRetryFunc={(times)=>{
-          let sendText = '发送邮件';
+          let sendText = 'Enviar email';
           if (times > 0) {
-            sendText = '重新发送';
+            sendText = 'Reenviar';
           }
           if (self.props.isSending) {
-            return <Button disabled>发送中</Button>
+            return <Button disabled>Enviando</Button>
           }
           return (
             <Button
@@ -89,7 +89,7 @@ class StepTwo extends Component {
       <Form style={{ maxWidth:350, marginLeft:"auto", marginRight: "auto" }}>
         <FormGroup>
           <Alert bsStyle="warning">
-            请登录邮箱，查看验证码!
+            Por favor, verifique seu email para obter o código de validação!
           </Alert>
         </FormGroup>
         <FormGroup>
@@ -98,7 +98,7 @@ class StepTwo extends Component {
               onChange={this.setInputValidateCode}
               value={this.props.validateCode}
               type="text"
-              placeholder="请输入接收到的验证码"
+              placeholder="Digite o código recebido"
               autoComplete="off"
               autoFocus
               />
@@ -124,7 +124,7 @@ class StepTwo extends Component {
             }}
             disabled={disabled}
           >
-          下一步
+           Próximo
           </Button>
         </FormGroup>
       </Form>

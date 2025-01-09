@@ -1,4 +1,3 @@
-
 import React, { PropTypes, Component } from 'react';
 import { Breadcrumb, Table, Button, Col } from 'react-bootstrap';
 import cx from 'classnames';
@@ -70,30 +69,30 @@ class ProductList extends Component {
 
   render() {
     const self = this;
-    const tipText = '暂无数据';
+    const tipText = 'Sem dados';
     return (
       <div className={s.root}>
         <div className={s.container}>
           <Breadcrumb>
             <Breadcrumb.Item active>
-            应用列表
-          </Breadcrumb.Item>
+              Lista de Aplicativos
+            </Breadcrumb.Item>
           </Breadcrumb>
           <Col style={{ marginBottom: '20px' }}>
             <Button
               onClick={this.props.popAddApp}
               bsStyle="primary"
             >
-          添加应用
-          </Button>
+              Adicionar Aplicativo
+            </Button>
           </Col>
           <Table striped bordered condensed hover responsive>
             <thead>
               <tr>
-                <th style={{ textAlign: 'center' }} >产品名</th>
-                <th style={{ textAlign: 'center' }} >成员</th>
-                <th style={{ textAlign: 'center' }} >Deployments</th>
-                <th style={{ textAlign: 'center' }} >操作</th>
+                <th style={{ textAlign: 'center' }} >Nome do Produto</th>
+                <th style={{ textAlign: 'center' }} >Membros</th>
+                <th style={{ textAlign: 'center' }} >Implantações</th>
+                <th style={{ textAlign: 'center' }} >Ações</th>
               </tr>
             </thead>
             <tbody>

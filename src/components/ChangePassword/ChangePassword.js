@@ -1,4 +1,3 @@
-
 import React, { PropTypes, Component } from 'react';
 import {
   Col,
@@ -61,19 +60,19 @@ class ChangePassword extends Component {
   render() {
     const self = this;
     let isValidate = true;
-    let oldPasswordTips = '';
+    let oldPasswordTips = 'Por favor, insira a senha antiga';
     if (!this.props.oldPassword) {
       isValidate = false;
-      oldPasswordTips = '请您输入旧密码';
+      oldPasswordTips = 'Por favor, insira a senha antiga';
     }
-    let newPasswordTips = '';
-    let newPasswordConfirmTips = '';
+    let newPasswordTips = 'Por favor, insira de 6 a 22 caracteres ou números';
+    let newPasswordConfirmTips = 'As senhas digitadas não conferem';
     if (this.props.newPassword.length < 6) {
-      newPasswordTips = '请您输入6～22位字符或数字'
+      newPasswordTips = 'Por favor, insira de 6 a 22 caracteres ou números'
     }
     if (!_.eq(this.props.newPassword, this.props.newPasswordConfirm)) {
       isValidate = false;
-      newPasswordConfirmTips = '两次输入的密码不一致'
+      newPasswordConfirmTips = 'As senhas digitadas não conferem'
     }
     var disabled = true;
     if (!this.props.isFetching && isValidate){
@@ -81,15 +80,15 @@ class ChangePassword extends Component {
     }
     return (
       <div style={{height:650, paddingLeft: 20, paddingRight:20 }}>
-        <Panel header="修改密码" style={{ maxWidth:350, marginLeft:"auto", marginRight: "auto" }}>
+        <Panel header="Alterar Senha" style={{ maxWidth:350, marginLeft:"auto", marginRight: "auto" }}>
           <Form>
             <FormGroup>
-              <ControlLabel>原密码</ControlLabel>
+              <ControlLabel>Senha Atual</ControlLabel>
               <FormControl
                 onChange={this.setOldPassword}
                 type="password"
                 value={this.props.oldPassword}
-                placeholder="请输入原密码"
+                placeholder="Digite sua senha atual"
                 onBlur={()=>this.setState({field1: true})}
                 autoFocus
                 />
@@ -104,12 +103,12 @@ class ChangePassword extends Component {
               </div>
             </FormGroup>
             <FormGroup>
-              <ControlLabel>新密码</ControlLabel>
+              <ControlLabel>Nova Senha</ControlLabel>
               <FormControl
                 onChange={this.setNewPassword}
                 type="password"
                 value={this.props.newPassword}
-                placeholder="请您输入新的密码"
+                placeholder="Digite sua nova senha"
                 onBlur={()=>this.setState({field2: true})}
               />
             </FormGroup>
@@ -123,12 +122,12 @@ class ChangePassword extends Component {
               </div>
             </FormGroup>
              <FormGroup>
-              <ControlLabel>确认新密码</ControlLabel>
+              <ControlLabel>Confirmar Nova Senha</ControlLabel>
               <FormControl
                 onChange={this.setNewPasswordConfirm}
                 type="password"
                 value={this.props.newPasswordConfirm}
-                placeholder="请您再次输入新的密码"
+                placeholder="Digite novamente sua nova senha"
                 onBlur={()=>this.setState({field3: true})}
               />
             </FormGroup>
@@ -158,7 +157,7 @@ class ChangePassword extends Component {
                   self.props.submit();
                 }}
               >
-              确认
+              Confirmar
               </Button>
             </FormGroup>
           </Form>

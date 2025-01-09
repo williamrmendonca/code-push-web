@@ -51,10 +51,10 @@ class StepThree extends Component {
     let passwordTips = '';
     let passwordConfirmTips = '';
     if (this.state.field1 && this.props.password.length < 6) {
-      passwordTips = '密码长度至少为6位'
+      passwordTips = 'A senha deve ter no mínimo 6 caracteres'
     }
     if (this.state.field2 && !_.eq(this.props.passwordConfirm, this.props.password) ) {
-      passwordConfirmTips = '确认密码和密码不一致'
+      passwordConfirmTips = 'As senhas não conferem'
     }
     let isValidate = false;
     if (this.props.password.length>=6
@@ -68,13 +68,13 @@ class StepThree extends Component {
     return (
       <Form style={{  maxWidth:350, marginLeft:"auto", marginRight: "auto" }}>
         <FormGroup>
-          <ControlLabel>密码</ControlLabel>
+          <ControlLabel>Senha</ControlLabel>
           <FormControl
             onChange={this.setInputPassword}
             onBlur={()=>this.setState({field1: true})}
             value={this.props.password}
             type="password"
-            placeholder="请输入密码"
+            placeholder="Digite sua senha"
             autoComplete="off"
             autoFocus
             />
@@ -86,13 +86,13 @@ class StepThree extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>确认密码</ControlLabel>
+          <ControlLabel>Confirmar Senha</ControlLabel>
           <FormControl
             onChange={this.setInputPasswordConfirm}
             onBlur={()=>this.setState({field2: true})}
             type="password"
             value={this.props.passwordConfirm}
-            placeholder="请再次输入密码"
+            placeholder="Digite novamente sua senha"
             autoComplete="off"
             />
         </FormGroup>
@@ -118,7 +118,7 @@ class StepThree extends Component {
             }}
             disabled={disabled}
           >
-          注册
+          Cadastrar
           </Button>
         </FormGroup>
       </Form>

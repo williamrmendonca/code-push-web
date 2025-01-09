@@ -185,7 +185,7 @@ class RestApi {
     })
     .then(this.dealResponse)
     .catch(function (e) {
-      return {httpCode: 0, text: '网络错误，请重试!'}
+      return {httpCode: 0, text: 'Erro de rede, tente novamente!'}
     });
   }
 
@@ -198,7 +198,7 @@ class RestApi {
     })
     .then(this.dealResponse)
     .catch(function (e) {
-      return {httpCode: 0, text: '网络错误，请重试!'}
+      return {httpCode: 0, text: 'Erro de rede, tente novamente!'}
     });
   }
 
@@ -211,7 +211,7 @@ class RestApi {
     })
     .then(this.dealResponse)
     .catch(function (e) {
-      return {httpCode: 0, text: '网络错误，请重试!'}
+      return {httpCode: 0, text: 'Erro de rede, tente novamente!'}
     });
   }
 
@@ -224,7 +224,7 @@ class RestApi {
     })
     .then(this.dealResponse)
     .catch(function (e) {
-      return {httpCode: 0, text: '网络错误，请重试!'}
+      return {httpCode: 0, text: 'Erro de rede, tente novamente!'}
     });
   }
 
